@@ -113,7 +113,7 @@ public class MainActivity extends ListActivity
    {
       // get a SharedPreferences.Editor to store new tag/query pair
       SharedPreferences.Editor preferencesEditor = savedSearches.edit();
-      preferencesEditor.putString(tag, query); // store current search
+      preferencesEditor.putString(tag, query); // store current search,such hash table
       preferencesEditor.apply(); // store the updated preferences
       
       // if tag is new, add to and sort tags, then display updated list
@@ -134,8 +134,7 @@ public class MainActivity extends ListActivity
       {
          // get query string and create a URL representing the search
          String tag = ((TextView) view).getText().toString();
-         String urlString = getString(R.string.searchURL) +
-            Uri.encode(savedSearches.getString(tag, ""), "UTF-8");
+         String urlString = "http://" + Uri.encode(savedSearches.getString(tag, ""), "UTF-8");
          
          // create an Intent to launch a web browser    
          Intent webIntent = new Intent(Intent.ACTION_VIEW, 
